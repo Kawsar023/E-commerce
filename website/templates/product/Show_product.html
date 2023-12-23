@@ -1,0 +1,84 @@
+{% extends 'adminpanel/base.html' %}
+
+
+{% block content %}
+<div id ="content">
+   <div class="content-wrap">
+   <div class="midde- cont">
+     <div class="main">
+         <div class="container-fluid">
+             <div class="row_column_title">
+                 <div class="col-md-12" >
+                     <!-- <div class="page-header"> -->
+                         <div class="page-title">
+                             
+                             <h2>Dashboard > Show Product</h2>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>      
+      
+
+<div class="container"  style="margin-top: 30px; border: 0px solid black; padding: 30px;">
+<div class="col-md-12 col-lg-12">
+<div class="white_shd full margin_bottom_30">
+    <div class="full graph_head">
+       <div class="heading1 margin_0">
+          <h2><a href="{% url 'product_add' %}" class="btn btn-success">Add Product</a></h2>
+       </div>
+    </div>
+    <div class="table_section padding_infor_info">
+       <div class="table-responsive-sm">
+          <table class="table">
+             <thead>
+                <tr>
+                   <!-- <th class="text-center">ID</th> -->
+                   <th class="text-center">Product Name</th>
+                   <th class="text-center">Category Name</th>
+                   <th class="text-center">Old Price</th>
+                   <th class="text-center">New Price</th>
+                   <th class="text-center">Description</th>
+                   <!-- <th class="text-center">Feature Image</th> -->
+                   <th class="text-center">Product Image</th>
+                   <th class="text-center">Action</th>
+                   
+                </tr>
+             </thead>
+             <tbody>
+                
+                {% for i in product_show %}
+                    
+                
+                    
+                <tr>
+                   <!-- <td class="text-center">{{i.id}}</td> -->
+                   <td class="text-center"><a href="{% url 'product_details' i.id %}">{{i.product_name}}</a></td>
+                   <td class="text-center">{{i.product_category.category_name}}</td>
+                   <td class="text-center">{{i.product_old_price}}</td>
+                   <td class="text-center">{{i.product_new_price}}</td>
+                   <td class="text-center">{{i.product_description}}</td>
+                   <!-- <td class="text-center"><img src="media/{{i.product_category.product_image}}" alt="" style="width: 50px; height: 50px;"></td> -->
+                   <td class="text-center">
+                    
+                    
+                   
+                    <img src="/media/{{i.product.produ_image}}" alt="" style="width: 50px; height: 50px;">
+                   
+                        
+                   </td>
+
+                   <td class="text-center"><a href="" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a> <a href="" class="btn btn-danger">Delete</a></td>
+                   
+                </tr>
+                {% endfor %}
+                
+             </tbody>
+          </table>
+       </div>
+    </div>
+ </div>
+</div>
+
+{% endblock %}

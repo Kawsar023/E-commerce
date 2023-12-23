@@ -1,0 +1,66 @@
+{% extends 'adminpanel/base.html' %}
+
+
+{% block content %}
+
+
+<div id ="content">
+    <div class="content-wrap">
+    <div class="midde- cont">
+      <!-- <div class="main"> -->
+          <div class="container-fluid">
+              <div class="row_column_title">
+                  <div class="col-md-12">
+                      <!-- <div class="page-header"> -->
+                          <div class="page-title">
+                              
+                              <h2>Dashboard > Add Product</h2>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+<form  action="{% url 'product_add' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+     <div class="form-group">
+         <label for="formgroupexampleInput" >Product Category</label>
+         <select name="product_cat" id="" class="form-control" required>
+             <option value="" selected disabled> Select A Category</option>
+         
+            {% for i in all_cat %}
+                <option value="{{i.id}}">{{i.category_name}}</option>
+            
+            {% endfor %}
+        </select>
+    </div>
+     <div class="form-group">
+         <label for="formgroupexampleInput" class="form-label">Product Name</label>
+         <input type="text" class="form-control" id="formgroupexampleInput" name="product_name" placeholder="Product Name">
+         </div>
+     <div class="form-group">
+         <label for="formgroupexampleInput" class="form-label">Product Old Price</label>
+         <input type="number" class="form-control" id="formgroupexampleInput" name="product_old_price" placeholder="Product Old Price">
+         </div>
+     <div class="form-group">
+         <label for="formgroupexampleInput" class="form-label">Product New Price</label>
+         <input type="number" class="form-control" id="formgroupexampleInput" name="product_new_price" placeholder="Product New Price">
+         </div>
+     <div class="form-group">
+         <label for="formgroupexampleInput" class="form-label">Product Description</label>
+         <textarea class="form-control" name="product_description" id="" cols="30" rows="2" required></textarea>
+      </div>
+     <div class="form-group">
+         <label for="formgroupexampleInput" class="form-label">Product Image</label>
+         <input type="file" class="form-control" id="formgroupexampleInput" name="product_image" placeholder=" Upload Product Image" multiple required>
+         </div>
+
+        <button class="btn btn-primary" type="submit">Save Product</button>
+         </form>
+        </div>
+     </div>
+{% load sweetify %}
+{% sweetify %}
+
+{% endblock %}

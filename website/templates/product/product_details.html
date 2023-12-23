@@ -1,0 +1,46 @@
+{% extends 'adminpanel/base.html' %}
+
+
+{% block content %}
+<div id ="content">
+   <!-- <div class="content-wrap"> -->
+   <div class="midde- cont">
+     <div class="main">
+         <div class="container-fluid">
+             <div class="row_column_title">
+                 <div class="col-md-12" >
+                     <!-- <div class="page-header"> -->
+                         <div class="page-title">
+                           <br>  
+                        <h2>Dashboard > Show Product</h2>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+        </div>
+        
+    {% for i in product_show %}
+            
+        
+            
+    <br>
+         <h2><span>Product Name :</span>{{i.product_name}}</h2>
+         <br>
+         <!-- <img src="" alt="" style="width: 100px; height: 100px;"> -->
+         <br>
+         {% for j in i.product.all %}
+        <img src="/media/{{j.product_image_all}}" alt="" style="width: 200px; height: 250px;">
+         {% endfor %}
+         <br>
+         <span style="font-weight: bold;">Product Description:</span>
+         <br>
+         <p>{{i.product_description}}</p>
+         <br>
+         {% endfor %}
+        </div>      
+   </div>  
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'adminpanel/base.html' %}
+
+{% load static  %} 
+
+
+{% block content %}
+
+<div id ="content">
+    <div class="content-wrap">
+    <div class="midde- cont">
+      <div class="main">
+          <div class="container-fluid">
+              <div class="row_column_title">
+                  <div class="col-md-12" >
+                   
+                      <!-- <div class="page-header"> -->
+                          <div class="page-title">
+                              
+                              <h2>Dashboard > Show Category</h2>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>   
+
+<div class="container"  style="margin-top: 30px; border: 1px solid black; padding: 30px;">
+    
+    {% for i in category_edit %}
+    
+    <form method="POST" action="{% url 'category_update' i.id %}" enctype="multipart/form-data">
+       {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Category Name</label>
+            <input type="text" class="form-control" value="{{i.category_name}}" name="category_name" required>
+            <div id="emailHelp" class="form-text"></div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Category Image</label>
+            <input type="file" class="form-control" value="{{i.category_image}}" name="category_image" required>
+            <div id="emailHelp" class="form-text"></div>
+            
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock %}
